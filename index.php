@@ -31,16 +31,16 @@ require 'vendor/autoload.php';
 $client = new Zelenin\Telegram\Bot\Api('484858770:AAHTXC1Ja6E77XEBVKxEfKLpuDjzxi0cbxc'); // Set your access token
 $url = 'https://cryptocrushbot.herokuapp.com/'; // URL RSS feed
 $update = json_decode(file_get_contents('php://input'));
-// Using DB::selectChats method.
-public static function getUsername($user_id)
-{
-    if ($chats = DB::selectChats(['chat_id' => $user_id])) {
-        $chat = reset($chats);
-        return isset($chat['username']) ? $chat['username'] : false;
-    }
+// // Using DB::selectChats method.
+// public static function getUsername($user_id)
+// {
+//     if ($chats = DB::selectChats(['chat_id' => $user_id])) {
+//         $chat = reset($chats);
+//         return isset($chat['username']) ? $chat['username'] : false;
+//     }
 
-    return false;
-}
+//     return false;
+// }
 //your app
 try {
 
@@ -74,7 +74,7 @@ try {
         $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
         $response = $client->sendMessage([
             'chat_id' => $update->message->chat->id,
-            'text' => "Hello"+ getUsername + ", Do you want to make a /deal?"
+            'text' => "Hello, Do you want to make a /deal?"
             ]);
 
     }
@@ -84,7 +84,7 @@ try {
         $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
         $response = $client->sendMessage([
             'chat_id' => $update->message->chat->id,
-            'text' => "The money of the buyer has been recieved, please seller proceed"
+            'text' => "The money of the buyer has been received, please seller proceed"
             ]);
 
     }
