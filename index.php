@@ -74,7 +74,7 @@ try {
         $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
         $response = $client->sendMessage([
             'chat_id' => $update->message->chat->id,
-            'text' => "Hello, Do you want to make a /deal?"
+            'text' => "Hello $username, Do you want to make a /deal?"
             ]);
 
     }
@@ -85,6 +85,16 @@ try {
         $response = $client->sendMessage([
             'chat_id' => $update->message->chat->id,
             'text' => "The money of the buyer has been received, please seller proceed"
+            ]);
+
+    }
+
+    else if($update->message->text == '/introduce')
+    {
+        $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
+        $response = $client->sendMessage([
+            'chat_id' => $update->message->chat->id,
+            'text' => "Hello @Everyone, I'm here to help with Trading and Dealing"
             ]);
 
     }
