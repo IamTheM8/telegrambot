@@ -24,14 +24,11 @@
 // /b_received - Buyer sent money
 // /s_sent - Seller sent
 // /deal_succeed - Every party received their money
-// /seller_address - Seller address
-// /buyer_address - Buyer address
-// /help - if you need to see commands
 
 
 require 'vendor/autoload.php';
 
-$client = new Zelenin\Telegram\Bot\Api('541832521:AAFRluNtyIWIAAbOZNHBX8n54X7nIKCZp8w'); // Set your access token
+$client = new Zelenin\Telegram\Bot\Api('484858770:AAHTXC1Ja6E77XEBVKxEfKLpuDjzxi0cbxc'); // Set your access token
 $url = 'https://cryptocrushbot.herokuapp.com/'; // URL RSS feed
 $update = json_decode(file_get_contents('php://input'));
 
@@ -43,7 +40,14 @@ try {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendMessage([
         	'chat_id' => $update->message->chat->id,
-        	'text' => "A deal has started"
+        	'text' => "A deal has started
+                       \n Main Escrow Agent - @VEEEGEEE  
+                       \n Escrow Agent - @Mr_Anderson26
+                       \n Escrow Agent - @CryptoVenturesMike  
+                       \n Escrow Agent - @jmoney90 
+                       \n Escrow Agent - @gino1000 
+                       \n Escrow Agent - @p_mn3y 
+                       \n Escrow Agent - 🛑@CCE18 3ETH MAX EACH DEAL🛑"
      	]);
     }
     else if($update->message->text == '/stop_dealing')
@@ -51,7 +55,7 @@ try {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendMessage([
     		'chat_id' => $update->message->chat->id,
-    		'text' => "One of the party denies the deal"
+    		'text' => "One of the party denies the deal, return funds if sended"
     		]);
 
     }
@@ -72,7 +76,7 @@ try {
         $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
         $response = $client->sendMessage([
             'chat_id' => $update->message->chat->id,
-            'text' => "Seller has sent coins, buyer stay tuned"
+            'text' => "Seller has sent coins, buyer stay tuned, check your wallet please"
             ]);
 
     }
@@ -82,7 +86,7 @@ try {
         $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
         $response = $client->sendMessage([
             'chat_id' => $update->message->chat->id,
-            'text' => "Deal has finished succesfully, congrats"
+            'text' => "Deal has finished succesfully, congrats to the parties involved"
             ]);
 
     }
@@ -94,8 +98,8 @@ try {
             'chat_id' => $update->message->chat->id,
             'text' => "List of commands :
             \n /deal -> a deal has started 
-            \n /stop_dealing -> One of the party denies the deal 
-            \n /b_received -> The money of the buyer has been recieved, please seller proceed
+            \n /stop_dealing -> One of the parties denies the deal 
+            \n /b_received -> The money of the buyer has been received, please seller proceed
             \n /s_sent -> Seller has sent coins, buyer stay tuned 
             \n/deal_succeed -> Deal has finished succesfully, congrats
             \n/help -> Shows list of available commands"
