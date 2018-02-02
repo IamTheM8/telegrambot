@@ -60,6 +60,16 @@ try {
 
     }
 
+    else if($update->message->text == '/start')
+    {
+        $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
+        $response = $client->sendMessage([
+            'chat_id' => $update->message->chat->id,
+            'text' => "Hello"+ $user_id+ ", Do you want to make a /deal?"
+            ]);
+
+    }
+
     else if($update->message->text == '/b_received')
     {
         $response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
